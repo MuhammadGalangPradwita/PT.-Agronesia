@@ -27,8 +27,8 @@ const Footer = () => {
     <footer className='bg-deep-slate pt-10'>
       <div className='container'>
         <div className='grid grid-cols-1 sm:grid-cols-6 lg:gap-20 md:gap-24 sm:gap-12 gap-12 pb-10'>
-          <div className='col-span-2'>
-            <div className='mb-10'>
+          <div className='col-span-1'>
+            <div className=' mb-10 justify-center flex items-center'>
               <Logo />
             </div>
             <div className='flex items-center gap-4'>
@@ -49,10 +49,10 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className='col-span-2'>
-            <div className='flex gap-20'>
+          <div className='col-span-3'>
+            <div className='flex gap-10'>
               {footerlink.map((product, i) => (
-                <div key={i} className='group relative col-span-2'>
+                <div key={i} className='group relative col-span-2 ml-auto'>
                   <p className='text-black text-xl font-semibold mb-9'>
                     {product.section}
                   </p>
@@ -71,7 +71,7 @@ const Footer = () => {
               ))}
             </div>
           </div>
-          <div className='col-span-2 sm:col-span-6 md:col-span-2'>
+          <div className='col-span-1 sm:col-span-6 md:col-span-2'>
             <div className='flex flex-col gap-10'>
               <div className='flex item-center'>
                 <Icon
@@ -83,18 +83,32 @@ const Footer = () => {
                 </p>
               </div>
               <Link href='tel:+1(909) 235-9814' className='flex items-center w-fit'>
-                <Icon
-                  icon='solar:phone-bold'
-                  className='text-primary text-3xl lg:text-2xl inline-block me-2'
-                />
+
                 <div className='flex flex-col'>
-                  <p className='text-black/60 hover:text-primary text-base'>
-                    (022) 4232-060
-                  </p>
-                  <p className='text-black/60 hover:text-primary text-base'>
-                    082229600060
-                  </p>
+                  <ul>
+                    <li className='flex items-center mb-3'>
+                      <Icon
+                        icon='solar:phone-bold'
+                        className='text-primary text-3xl lg:text-2xl inline-block me-3'
+                      />
+                      <p className='text-black/60 hover:text-primary text-base'>
+                        (022) 4232-060
+                      </p>
+                    </li>
+                    <li className='flex items-center'>
+                      <Icon
+                        icon='solar:call-chat-bold'
+                        className='text-primary text-3xl lg:text-2xl inline-block me-3'
+                      />
+                      <p className='text-black/60 hover:text-primary text-base'>
+                        082229600060
+                      </p>
+                    </li>
+                  </ul>
+
                 </div>
+
+
 
               </Link>
               <Link href='/' className='flex items-center w-fit'>

@@ -79,11 +79,11 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 z-40 w-full transition-all duration-300 bg-transparent ${sticky ? 'bg-white shadow-lg py-2' : 'shadow-none py-4'
+      className={`fixed top-0 z-40 w-full transition-all duration-300 bg-transparent  ${sticky ? 'backdrop-blur-md shadow-lg py-2' : 'shadow-none py-4' 
         }`}>
       <div>
-        <div className='container flex items-center justify-end'>
-          <Logo />
+        <div className={`container flex items-center justify-end transition-all duration-300  ${sticky ? 'scale-100' : 'scale-100'}`}>
+            <Logo />
           <nav className="hidden lg:flex items-center ml-auto">
             {navLink.map((item, index) => (
               <div key={index} className="relative group">
@@ -117,7 +117,7 @@ const Header: React.FC = () => {
               </div>
             ))}
           </nav>
-          <form className='hidden lg:block mx-6 w-50'>
+          <form className={`hidden lg:block mx-0 w-50 transition-all duration-300 ${sticky ? 'opacity-90' : 'opacity-100'}`}>
             <div className='relative rounded-35'>
               <input
                 type='text'
@@ -135,18 +135,18 @@ const Header: React.FC = () => {
             </div>
           </form>
           <button
-            className="p-2 mr-6 rounded-full hover:bg-blue-100 hover:cursor-pointer gap-2"
+            className="p-2 mx-2 rounded-full hover:bg-blue-100 hover:cursor-pointer gap-2"
             aria-label="Cart"
           >
             <Icon
-              icon="gravity-ui:shopping-cart"
+              icon="solar:cart-large-line-duotone"
               className="text-black hover:text-primary text-3xl inline-block duration-300"
             />
           </button>
-          <div className='flex items-center gap-4'>
+          <div className='flex items-center gap-2'>
             <Link
               href='#'
-              className='hidden lg:block bg-primary text-white hover:bg-primary/15 hover:text-primary py-2 px-6 rounded-full text-lg font-medium'
+              className='hidden lg:block bg-primary text-white hover:bg-primary/15 hover:text-primary py-2 px-4 rounded-full text-lg font-medium'
               onClick={() => {
                 setIsSignInOpen(true)
               }}>
@@ -174,7 +174,7 @@ const Header: React.FC = () => {
             )}
             <Link
               href='#'
-              className='hidden lg:block bg-primary/15 hover:bg-primary text-primary hover:text-white py-2 px-6 rounded-full text-lg font-medium'
+              className='hidden lg:block border border-gray bg-primary/15 hover:bg-primary text-primary hover:text-white py-2 px-4 rounded-full text-lg font-medium'
               onClick={() => {
                 setIsSignUpOpen(true)
               }}>

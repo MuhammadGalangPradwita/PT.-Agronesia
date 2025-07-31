@@ -1,17 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Logo: React.FC = () => {
+interface LogoProps {
+  className?: string;
+}
+
+const Logo: React.FC<LogoProps> = ({ className }) => {
   return (
-    <Link href="/">
-      <Image
+    <Link href="/" className={className}>
+      <div>
+        <Image
         src="/images/logo/Logo.png"
         alt="logo"
         width={60}
         height={60}
-        style={{ width: "60", height: "60" }}
         quality={100}
       />
+      </div>
     </Link>
   );
 };

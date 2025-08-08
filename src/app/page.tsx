@@ -5,12 +5,12 @@ import Mentor from "@/app/components/Home/Mentor";
 import Testimonial from "@/app/components/Home/Testimonials";
 import ContactForm from "@/app/components/ContactForm";
 import ValuePropositions from "./components/ValuePropositions";
-import Bestsellers from "./components/Bestsellers";
+import Bestsellers from "./components/Home/Bestsellers";
 import Newsletter from "@/app/components/Home/Newsletter";
 
 import { Metadata } from "next";
 import BannerCarousel from "@/app/components/Home/Hero";
-import BussinessUnits from "@/app/components/BusinessUnits"
+import BussinessUnits from "@/app/components/Home/BusinessUnits"
 
 export const metadata: Metadata = {
   title: "PT. Agronesia",
@@ -19,16 +19,21 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      <BannerCarousel />
+      <section id="home">
+        <BannerCarousel />
+      </section>
       <ValuePropositions />
       <BussinessUnits />
       <Bestsellers />
       <Companies />
-      <Courses />
-      <Mentor />
+      {/* <Courses /> */}
+      {/* <Mentor /> */}
       <Testimonial />
-      <ContactForm />
+      <section id="contact">
+        <ContactForm />
+      </section>
       {/* <Newsletter /> */}
     </main>
   );
 }
+

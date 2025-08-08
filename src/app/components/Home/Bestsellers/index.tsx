@@ -52,14 +52,14 @@ const Bestsellers = () => {
                         ))
                         : bestsellers.map((item, i) => (
                             <div key={i}>
-                                <div className='bg-white m-3 px-3 pt-3 pb-6 shadow-md rounded-2xl h-full border border-black/10'>
+                                <div className='bg-white m-3 px-3 pt-3 pb-6 shadow-md rounded-2xl h-[400px] border border-black/10'>
                                     <div className='relative rounded-3xl'>
                                         <Image
                                             src={item.imgSrc}
                                             alt={item.name}
                                             width={389}
                                             height={262}
-                                            className='w-full rounded-2xl object-cover'
+                                            className='w-full rounded-2xl object-cover mb-4'
                                         />
                                         <div className='absolute right-5 -bottom-3 bg-secondary rounded-full px-4 py-1'>
                                             <p className='text-white uppercase text-center text-sm font-medium'>
@@ -68,7 +68,7 @@ const Bestsellers = () => {
                                         </div>
                                     </div>
 
-                                    <div className='px-3 pt-6'>
+                                    <div className='w-full px-3 pt-4 mb-4'>
                                         <h6 className='text-black text-lg font-semibold max-w-[75%] mb-1'>
                                             {item.name}
                                         </h6>
@@ -76,7 +76,7 @@ const Bestsellers = () => {
                                             {item.desc}
                                         </p>
 
-                                        <div className='flex justify-between items-center mb-6 mt-2'>
+                                        <div className='flex justify-between items-center mt-2'>
                                             <div className='flex items-center gap-2'>
                                                 <Icon
                                                     icon='solar:star-bold'
@@ -87,32 +87,21 @@ const Bestsellers = () => {
                                                 </p>
                                             </div>
 
-                                            <div className='flex flex-col items-end text-right'>
+                                            <div className='text-right'>
                                                 {item.discPrice ? (
                                                     <>
-                                                        <p className='text-black font-bold text-lg'>
-                                                            ${item.discPrice.toFixed(2)}
+                                                        <p className='text-black font-bold text-lg leading-tight'>
+                                                            Rp{item.discPrice.toFixed(2)}
                                                         </p>
-                                                        <p className='text-gray-500 line-through text-sm'>
-                                                            ${item.price.toFixed(2)}
+                                                        <p className='text-gray-500 line-through text-sm leading-tight'>
+                                                            Rp{item.price.toFixed(2)}
                                                         </p>
                                                     </>
                                                 ) : (
-                                                    <p className='text-black font-bold text-lg'>
-                                                        ${item.price.toFixed(2)}
+                                                    <p className='text-black font-bold text-lg leading-tight'>
+                                                        Rp{item.price.toFixed(2)}
                                                     </p>
                                                 )}
-                                            </div>
-                                        </div>
-
-                                        <div className='flex justify-end'>
-                                            <div className='bg-blue-500 text-white px-4 py-2 rounded-full text-center hover:bg-primary transition duration-300 w-fit'>
-                                                <a
-                                                    className='text-white font-medium flex-auto justify-end'
-                                                    href={item.href || '#'}
-                                                >
-                                                    See Product
-                                                </a>
                                             </div>
                                         </div>
                                     </div>

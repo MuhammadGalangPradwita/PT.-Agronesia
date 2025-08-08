@@ -8,17 +8,21 @@ import Signin from '@/app/components/Auth/SignIn'
 import SignUp from '@/app/components/Auth/SignUp'
 import { Icon } from '@iconify/react/dist/iconify.js'
 import { HeaderType } from '@/app/types/menu'
+import { Link as ScrollLink } from "react-scroll";
 
 const Header: React.FC = () => {
   const [navbarOpen, setNavbarOpen] = useState(false)
   const [sticky, setSticky] = useState(false)
   const [isSignInOpen, setIsSignInOpen] = useState(false)
   const [isSignUpOpen, setIsSignUpOpen] = useState(false)
+  const [openDropdownIndex, setOpenDropdownIndex] = useState<number | null>(null)
+  const dropdownRef = useRef<HTMLDivElement>(null)
   const [navLink, setNavLink] = useState<HeaderType[]>([])
 
   const signInRef = useRef<HTMLDivElement>(null)
   const signUpRef = useRef<HTMLDivElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +41,11 @@ const Header: React.FC = () => {
   const handleScroll = () => {
     setSticky(window.scrollY >= 80)
   }
+
+  const handleDropdownToggle = (index: number) => {
+    setOpenDropdownIndex(prevIndex => (prevIndex === index ? null : index))
+  }
+
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -61,6 +70,23 @@ const Header: React.FC = () => {
   }
 
   useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setOpenDropdownIndex(null)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
+
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     document.addEventListener('mousedown', handleClickOutside)
     return () => {
@@ -79,30 +105,62 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 z-40 w-full transition-all duration-300 bg-transparent  ${sticky ? 'backdrop-blur-md shadow-lg py-2' : 'shadow-none py-4' 
+      className={`fixed top-0 z-40 w-full transition-all duration-300 bg-transparent  ${sticky ? 'backdrop-blur-md shadow-lg py-2' : 'shadow-none py-4'
         }`}>
       <div>
         <div className={`container flex items-center justify-end transition-all duration-300  ${sticky ? 'scale-100' : 'scale-100'}`}>
-            <Logo />
-          <nav className="hidden lg:flex items-center ml-auto">
+          <Logo />
+          <nav ref={dropdownRef} className="hidden lg:flex items-center ml-auto">
             {navLink.map((item, index) => (
-              <div key={index} className="relative group">
-                <Link
-                  href={item.href}
-                  className="flex items-center gap-2 px-4 py-2 hover:text-primary transition-colors duration-200"
-                >
-                  {item.label}
+              <div key={index} className="relative">
+                {item.label === "Home" ? (
+                  <ScrollLink
+                    to="home"
+                    smooth={true}
+                    duration={500}
+                    offset={-80}
+                    className="flex items-center gap-2 px-4 py-2 hover:text-primary transition-colors duration-200 cursor-pointer"
+                  >
+                    {item.label}
+                  </ScrollLink>
+                ) : item.label === "Contact Us" ? (
+                  <ScrollLink
+                    to="contact"
+                    smooth={true}
+                    duration={500}
+                    offset={-80}
+                    className="flex items-center gap-2 px-4 py-2 hover:text-primary transition-colors duration-200 cursor-pointer"
+                  >
+                    {item.label}
+                  </ScrollLink>
+                ) : item.label === "BMC" ? (
+                  <Link
+                    href="/BMC"
+                    className="flex items-center gap-2 px-4 py-2 hover:text-primary transition-colors duration-200 cursor-pointer"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    onClick={() => handleDropdownToggle(index)}
+                    className="flex items-center gap-2 px-4 py-2 hover:text-primary transition-colors duration-200"
+                  >
+                    {item.label}
+                    {item.children && item.children.length > 0 && (
+                      <Icon
+                        icon={
+                          openDropdownIndex === index
+                            ? "mdi:chevron-up"
+                            : "mdi:chevron-down"
+                        }
+                        className="w-4 h-4"
+                      />
+                    )}
+                  </button>
+                )}
 
-                  {item.icon && (
-                    <Icon
-                      icon={item.icon}
-                      className="h-4 w-4"
-                    />
-                  )}
-
-                </Link>
-                {item.children && item.children.length > 0 && (
-                  <div className="absolute left-0 top-full mt-2 w-48 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 z-50">
+                {item.children && item.children.length > 0 && openDropdownIndex === index && (
+                  <div className="absolute left-0 top-full mt-2 w-48 bg-white shadow-lg rounded-lg z-50">
                     {item.children.map((child, idx) => (
                       <Link
                         key={idx}
@@ -236,7 +294,28 @@ const Header: React.FC = () => {
           </div>
           <nav className='flex flex-col items-start p-4'>
             {navLink.map((item, index) => (
-              <MobileHeaderLink key={index} item={item} />
+              item.href?.startsWith('#') ? (
+                <ScrollLink
+                  key={index}
+                  to={item.href.replace('#', '')} // hapus tanda #
+                  smooth={true}
+                  duration={500}
+                  offset={-80}
+                  className="cursor-pointer block py-2 px-4 w-full"
+                  onClick={() => setNavbarOpen(false)}
+                >
+                  {item.label}
+                </ScrollLink>
+              ) : (
+                <Link
+                  key={index}
+                  href={item.href || '#'}
+                  className="block py-2 px-4 w-full"
+                  onClick={() => setNavbarOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
             <div className='mt-4 flex flex-col space-y-4 w-full'>
               <Link

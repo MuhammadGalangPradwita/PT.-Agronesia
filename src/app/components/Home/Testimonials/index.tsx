@@ -100,7 +100,7 @@ const Testimonial = () => {
   return (
     <section id='testimonial'>
       <div className='container'>
-        <h2 className='text-midnight_text max-w-96'>What Our Learners Say</h2>
+        <h2 className='text-midnight_text max-w-100'>Our Client Say</h2>
         <Slider {...settings}>
           {loading
             ? Array.from({ length: 3 }).map((_, i) => (

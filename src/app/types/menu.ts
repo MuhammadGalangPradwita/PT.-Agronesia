@@ -7,6 +7,6 @@ export type HeaderType = {
   label: string
   href: string
   icon?: string 
-  children?: HeaderType[] // tambahkan baris ini
+  children?: HeaderType[] 
   submenu?: SubmenuItem[]
 }

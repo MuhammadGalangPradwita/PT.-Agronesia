@@ -69,7 +69,7 @@ const Companies = () => {
     <section className='text-center'>
       <div className='container'>
         <h6 className='text-midnight_text capitalize'>
-          Trusted by companies of all sizes
+          Our Technology Partners
         </h6>
         <div className='py-7 border-b'>
           <Slider {...settings}>

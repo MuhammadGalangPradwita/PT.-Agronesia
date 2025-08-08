@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { Element } from 'react-scroll';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -70,7 +71,8 @@ const ContactForm = () => {
       })
   }
   return (
-    <section id='contact' className='scroll-mt-12'>
+    <Element name='contact'>
+      <section id='contact' className='scroll-mt-12'>
       <div className='container'>
         <div className='relative'>
           <h2 className='mb-9 text-midnight_text'>Get in Touch</h2>
@@ -182,6 +184,8 @@ const ContactForm = () => {
         </div>
       </div>
     </section>
+    </Element>
+    
   )
 }
 

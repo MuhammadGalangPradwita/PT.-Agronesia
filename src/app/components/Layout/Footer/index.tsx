@@ -35,17 +35,17 @@ const Footer = () => {
               <Link
                 href='https://facebook.com'
                 className='hover:text-primary text-black text-3xl'>
-                <Icon icon='tabler:brand-facebook' />
+                <Icon icon='ic:baseline-facebook' />
               </Link>
               <Link
                 href='https://twitter.com'
                 className='hover:text-primary text-black text-3xl'>
-                <Icon icon='tabler:brand-twitter' />
+                <Icon icon='hugeicons:new-twitter-ellipse' />
               </Link>
               <Link
                 href='https://instagram.com'
                 className='hover:text-primary text-black text-3xl'>
-                <Icon icon='tabler:brand-instagram' />
+                <Icon icon='mage:instagram-circle' />
               </Link>
             </div>
           </div>
@@ -71,7 +71,8 @@ const Footer = () => {
               ))}
             </div>
           </div>
-          <div className='col-span-1 sm:col-span-6 md:col-span-2'>
+
+          <div className='col-span-4 sm:col-span-6 md:col-span-2'>
             <div className='flex flex-col gap-10'>
               <div className='flex item-center'>
                 <Icon

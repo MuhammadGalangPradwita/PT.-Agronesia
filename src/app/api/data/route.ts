@@ -13,19 +13,19 @@ import { Icon } from '@iconify/react/dist/iconify.js'
 const HeaderData: HeaderType[] = [
   // { label: 'Home', href: '/' },
   {
-    label: 'Home', href: '/',
+    label: 'Home', href: '/#home',
   },
   { 
     label: 'Products & Services',
     href: '',
     icon: 'gravity-ui:chevron-down',
     children: [
-      { label: 'Inkaba', href: '/#courses' },
-      { label: 'BMC', href: '/#courses' },
-      { label: 'Saripetojo', href: '/#courses' },
+      { label: 'Inkaba', href: '/' },
+      { label: 'BMC', href: '/' },
+      { label: 'Saripetojo', href: '/' },
     ],
    },
-  { label: 'About Us', href: '/#mentor' },
+  // { label: 'About Us', href: '/#mentor' },
   { label: 'Contact Us', href: '/#contact' },
   // { label: 'Docs', href: '/documentation' },
 ]
@@ -110,37 +110,69 @@ const CourseData: CourseType[] = [
 
 const BussinessUnitsData: BussinessUnitesType[] = [
   {
-    name: 'Inkaba',
+    description: 'Inkaba',
     imgSrc: '/images/bussinessUnits/bussinessInkaba.png',
-    description: 'Inkaba is a leading provider of innovative software solutions, specializing in web and mobile applications that drive business growth.',
+    name: 'Advanced',
+    price: 99.99,
+    discPrice: 59.99,
     href: '',
+    rating: 4.8,
   },
   {
-    name: 'BMC',
-    imgSrc: '/images/bussinessUnits/bussinessBMC.png',
-    description: 'BMC is a global leader in business process management, offering cutting-edge solutions to streamline operations and enhance productivity.',
-    href: '',
-  },
-  {
-    name: 'Saripetojo',
-    imgSrc: '/images/bussinessUnits/bussinessSaripetojo.png',
-    description: 'Saripetojo is a dynamic startup focused on delivering high-quality digital marketing services to help businesses thrive in the online space.',
-    href: '',
-  }
-]
-
-const BestsellersData: BestsellersType[] = [
-  {
-    desc: 'Inkaba Pro',
-    imgSrc: '/images/bestsellers/inkabaPro.png',
+    description: 'Inkaba',
+    imgSrc: '/images/bussinessUnits/bussinessInkaba.png',
     name: 'Advanced',
     price: 99.99,
     href: '',
     rating: 4.8,
   },
   {
-    desc: 'BMC Suite',
-    imgSrc: '/images/bestsellers/bmcSuite.png',
+    description: 'Inkaba',
+    imgSrc: '/images/bussinessUnits/bussinessInkaba.png',
+    name: 'Advanced',
+    price: 99.99,
+    href: '',
+    rating: 4.8,
+  },
+  {
+    description: 'Inkaba',
+    imgSrc: '/images/bussinessUnits/bussinessInkaba.png',
+    name: 'Advanced',
+    price: 99.99,
+    discPrice: 59.99,
+    href: '',
+    rating: 4.8,
+  },
+  {
+    description: 'Inkaba',
+    imgSrc: '/images/bussinessUnits/bussinessInkaba.png',
+    name: 'Advanced',
+    price: 99.99,
+    href: '',
+    rating: 4.8,
+  },
+  {
+    description: 'Inkaba',
+    imgSrc: '/images/bussinessUnits/bussinessInkaba.png',
+    name: 'Advanced',
+    price: 99.99,
+    href: '',
+    rating: 4.8,
+  },
+]
+
+const BestsellersData: BestsellersType[] = [
+  {
+    desc: 'Inkaba',
+    imgSrc: '/images/bussinessUnits/bussinessInkaba.png',
+    name: 'Advanced',
+    price: 99.99,
+    href: '',
+    rating: 4.8,
+  },
+  {
+    desc: 'BMC',
+    imgSrc: '/images/bussinessUnits/bussinessInkaba.png',
     name: 'Comprehensive business',
     price: 79.99,
     discPrice: 59.99,
@@ -149,8 +181,33 @@ const BestsellersData: BestsellersType[] = [
   },
   {
     name: 'Saripetojo Marketing',
-    imgSrc: '/images/bestsellers/saripetojoMarketing.png',
-    desc: 'Effective digital marketing.',
+    imgSrc: '/images/bussinessUnits/bussinessInkaba.png',
+    desc: 'Saripetojo',
+    price: 59.99,
+    href: '',
+    rating: 4.9,
+  },
+  {
+    desc: 'Inkaba',
+    imgSrc: '/images/bussinessUnits/bussinessInkaba.png',
+    name: 'Advanced',
+    price: 99.99,
+    href: '',
+    rating: 4.8,
+  },
+  {
+    desc: 'BMC',
+    imgSrc: '/images/bussinessUnits/bussinessInkaba.png',
+    name: 'Comprehensive business',
+    price: 79.99,
+    discPrice: 59.99,
+    href: '',
+    rating: 4.7,
+  },
+  {
+    name: 'Saripetojo Marketing',
+    imgSrc: '/images/bussinessUnits/bussinessInkaba.png',
+    desc: 'Saripetojo',
     price: 59.99,
     href: '',
     rating: 4.9,
@@ -225,7 +282,7 @@ const FooterLinkData: FooterLinkType[] = [
     section: 'Navigation & Help',
     links: [
       { label: 'Home', href: '/' },
-      { label: 'About Us', href: '/#courses' },
+      // { label: 'About Us', href: '/#courses' },
       { label: 'Contact Us', href: '/#contact' },
     ],
   },
@@ -237,6 +294,7 @@ const FooterLinkData: FooterLinkType[] = [
       { label: 'Saripetojo', href: '/' },
     ],
   },
+  
 ]
 
 export const GET = () => {

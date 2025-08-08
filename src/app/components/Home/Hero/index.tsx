@@ -36,8 +36,8 @@ const BannerCarousel = () => {
   }
 
   return (
-    <section className='text-center'>
-      <div className='container py-10 '>
+    <section id='home' className='text-center'>
+      <div className='container py-5'>
         <Slider {...settings}>
           {banners.map((item, i) => (
             <div key={i} className="px-1">
